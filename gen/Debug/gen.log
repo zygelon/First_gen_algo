@@ -1,0 +1,3 @@
+﻿  Source.cpp
+c:\users\zygel\documents\visual studio 2017\projects\gen\gen\source.cpp(124): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+  gen.vcxproj -> C:\Users\zygel\Documents\Visual Studio 2017\Projects\gen\Debug\gen.exe
