@@ -12,6 +12,7 @@ public:
 	void Read_DNA();
 	void Mutation(){ DNA[rand() % gen_size] = rand() % max_jump; }
 	void Action();
+	int Get_score() { return score; }
 	bool Is_alive() { return (hp > 0); }
 	void Regen() { hp = start_hp; score = 0; }
 	void Write_DNA(std::ostream& os);
