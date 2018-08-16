@@ -26,7 +26,7 @@ void World::Create_world()
 			int r = rand() % 100 + 1;
 			if (r > poison_chance + food_chance + wall_chance) map[i][j] = Items::empty;
 			else if (r > poison_chance + wall_chance) map[i][j] = Items::food;
-			else if (r > poison_chance)map[i][j] = Items::wall;
+			else if (r > poison_chance) map[i][j] = Items::wall;
 			else map[i][j] = Items::poison;
 		}
 	is_world_old = true;

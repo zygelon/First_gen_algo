@@ -165,5 +165,14 @@ void Bot::Write_DNA(std::ostream &os)
 		if (DNA[i] < 10) os << " ";
 		os << DNA[i] << " ";
 	}
+	if (typeid(os) == typeid(cout))
+	{
+		cout << '\n';
+		for (int i = 0; i < gen_size; ++i)
+		{
+			if (i < 10) os << " ";
+			os << i << " ";
+		}
+	}
 	os << '\n'<<'\n';
 }

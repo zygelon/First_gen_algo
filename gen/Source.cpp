@@ -20,14 +20,13 @@ int main()
 	srand(time(0));
 
 	Simulation gen_algo;
-	/*
+	gen_algo.Select_gener(2024);
 	for (int i = 0; i < 2025; ++i)
 	{
-		Selection_last_bots();
-		my_world->Create_world();
-		Bot_generation(0,true);
-	}*/
+		gen_algo.Last_bots_selection();
+		gen_algo.Bot_generation();
+	}
 	//bots.front()->Write_DNA(out);
-	//out.close();
+	out.close();
 	system("pause");
 }

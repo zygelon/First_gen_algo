@@ -2,9 +2,9 @@
 
 
 
-Simulation::Simulation(int max_gen)
+Simulation::Simulation()
 {
-	max_generation = max_gen;
+	//max_generation = max_gen;
 	map = &World::Self();
 	generation = 0;
 	bots_alive = max_bots;
@@ -52,8 +52,7 @@ void Simulation::Last_bots_selection() {
 	map->Create_world();
 	while (bots_alive > min_bots)
 	{
-		int &bots_alive = this->bots_alive, int min_bots = this->min_bots;
-		bots.remove_if([](Bot* t)
+		bots.remove_if( [this](Bot* t)
 		{if (!t->Is_alive() && bots_alive > min_bots) { t->~Bot(); --bots_alive; return true; } return false; });
 
 		forward_list<Bot*>::iterator t = bots.begin();
@@ -62,5 +61,23 @@ void Simulation::Last_bots_selection() {
 			(*t)->Action();
 			++t;
 		}
+		if (selected_gener == generation) {
+			Show_curr_gener();
+		}
 	}
+	
+}
+
+void Simulation::Show_curr_gener()
+{
+		map->Show();
+		cout << "Bot allive " << bots_alive << '\n';
+		if (bots_alive == min_bots)
+		{
+			cout << "------------------------------\nDNA:\n";
+			for (auto i = bots.begin(); i != bots.end(); ++i)
+				(*i)->Write_DNA(cout);
+			cout << "------------------------------\n";
+		}
+		system("pause");
 }
