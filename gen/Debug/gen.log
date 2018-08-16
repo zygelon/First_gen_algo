@@ -1,3 +1,9 @@
-﻿  Source.cpp
-c:\users\zygel\documents\visual studio 2017\projects\gen\gen\source.cpp(124): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+﻿  Bot.cpp
+  SFML_output.cpp
+  Simulation.cpp
+  Source.cpp
+c:\users\zygel\documents\visual studio 2017\projects\gen\gen\source.cpp(22): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+  World.cpp
+  Создание кода...
+c:\users\zygel\documents\visual studio 2017\projects\gen\gen\bot.cpp(212): warning C4715: Bot::Look: значение возвращается не при всех путях выполнения
   gen.vcxproj -> C:\Users\zygel\Documents\Visual Studio 2017\Projects\gen\Debug\gen.exe
