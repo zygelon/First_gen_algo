@@ -10,7 +10,7 @@ public:
 	Bot(const Bot& parent);//копирование
 	~Bot();
 	void Read_DNA();
-	void Mutation(){ DNA[rand() % gen_size] = rand() % max_jump; }
+	void Mutation(){ DNA[rand() % gen_size] = rand() % gen_size; }
 	void Action();
 	int Get_score() { return score; }
 	bool Is_alive() { return (hp > 0); }
@@ -19,11 +19,10 @@ public:
 
 	int x, y;
 private:
-	const int gen_size = 64;
-	const int max_jump = 64;
+	const int gen_size = 32;
 	const int moves_per_act=10;
-	const int food_benefit = 20;
-	const int start_hp = 50;
+	const int food_benefit = 10;
+	const int start_hp = 20;
 
 	int Pos_gen_math(int i) { return (pos_gen + i) % gen_size; }
 

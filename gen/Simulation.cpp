@@ -16,6 +16,9 @@ Simulation::Simulation()
 
 		bots.push_front(new Bot(x, y));
 		bots.front()->Mutation();
+		bots.front()->Mutation();
+		bots.front()->Mutation();
+		bots.front()->Mutation();
 	}
 }
 
@@ -28,15 +31,14 @@ Simulation::~Simulation()
 void Simulation::Bot_generation() {
 	bots_alive = max_bots;
 	forward_list<Bot*>::iterator t = bots.begin();
-	for (int i = 0; i < 8; ++i, ++t)
-		for (int j = 0; j < 7; ++j)
+	for (int i = 0; i < min_bots; ++i, ++t)
+		for (int j = 0; j < max_bots/min_bots-1; ++j)
 		{
+			if(generation>900 && i==0) sum_score += (*t)->Get_score();
 			(*t)->Regen();
 			Bot* t_b = new Bot(**t);
-			if (j < 4)
+			if (j < (max_bots/min_bots)/2+1)
 			{
-				t_b->Mutation();
-				t_b->Mutation();
 				t_b->Mutation();
 				t_b->Mutation();
 				t_b->Mutation();
@@ -45,6 +47,7 @@ void Simulation::Bot_generation() {
 			map->Set_empty_pos(t_b->x, t_b->y);
 			bots.push_front(t_b);
 		}
+	;
 }
 
 void Simulation::Last_bots_selection() {
@@ -70,14 +73,27 @@ void Simulation::Last_bots_selection() {
 
 void Simulation::Show_curr_gener()
 {
-		map->Show();
-		cout << "Bot allive " << bots_alive << '\n';
-		if (bots_alive == min_bots)
+//	static char skip = 'a';
+//	map->Show();
+//	skip = _getch();
+//	if (skip == 's' && bots_alive!=min_bots) return;
+	cout << "Bot allive " << bots_alive << '\n';
+	if (bots_alive == min_bots)
+	{
+		cout << "------------------------------\nDNA and Score:\n";
+		for (auto i = bots.begin(); i != bots.end(); ++i)
 		{
-			cout << "------------------------------\nDNA:\n";
-			for (auto i = bots.begin(); i != bots.end(); ++i)
-				(*i)->Write_DNA(cout);
-			cout << "------------------------------\n";
+			cout << "Score = " << (*i)->Get_score() << '\n';
+			(*i)->Write_DNA(cout);
 		}
-		system("pause");
+		cout << "------------------------------\n";
+	}
+	//system("pause");
+}
+
+void Simulation::Write_DNA(ostream& os)
+{
+	auto iter = bots.begin();
+	for (int i = 0; i < max_bots - 2; ++i, ++iter);
+	(*iter)->Write_DNA(os);
 }

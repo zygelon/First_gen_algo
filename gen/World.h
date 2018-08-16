@@ -18,7 +18,7 @@ public:
 	Items Get_inf(int x, int y);
 	void Show();
 private:
-	const int poison_chance = 0, food_chance = 20, wall_chance = 40;
+	const int poison_chance = 10, food_chance = 30, wall_chance = 10;
 
 	Items **map;
 	bool is_world_old;

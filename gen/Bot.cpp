@@ -29,7 +29,7 @@ Bot::Bot(int x, int y)
 	DNA[1] = 1;
 	DNA[2] = 3;
 	for (int i = 3; i < gen_size; ++i)
-		DNA[i] = rand() % max_jump;
+		DNA[i] = rand() % gen_size;
 	//DNA[i] = 3;
 }
 
@@ -44,13 +44,70 @@ void Bot::Action() {
 		{
 		case 0:
 			Move();
+			/*
+			switch (Look())
+			{
+			case Items::wall:
+				pos_gen = Pos_gen_math(DNA[Pos_gen_math(pos_gen + 1)]);
+				break;
+			case Items::food:
+				pos_gen = Pos_gen_math(DNA[Pos_gen_math(pos_gen + 2)]);
+				break;
+			case Items::poison:
+				pos_gen = Pos_gen_math(DNA[Pos_gen_math(pos_gen + 3)]);
+				break;
+			case Items::bot:
+				pos_gen = Pos_gen_math(DNA[Pos_gen_math(pos_gen + 4)]);
+				break;
+			default:
+				pos_gen = Pos_gen_math(pos_gen + 5);
+				break;
+			}*/
 			moves_left = 0;
 			break;
 		case 1:
 			b_dir = (dir)(((int)b_dir + 3) % 4);
+			/*
+			switch (Look())
+			{
+			case Items::wall:
+				pos_gen = Pos_gen_math(DNA[Pos_gen_math(pos_gen + 1)]);
+				break;
+			case Items::food:
+				pos_gen = Pos_gen_math(DNA[Pos_gen_math(pos_gen + 2)]);
+				break;
+			case Items::poison:
+				pos_gen = Pos_gen_math(DNA[Pos_gen_math(pos_gen + 3)]);
+				break;
+			case Items::bot:
+				pos_gen = Pos_gen_math(DNA[Pos_gen_math(pos_gen + 4)]);
+				break;
+			default:
+				pos_gen = Pos_gen_math(pos_gen + 5);
+				break;
+			}*/
 			break;
 		case 2:
 			b_dir = (dir)(((int)b_dir + 1) % 4);
+			/*
+			switch (Look())
+			{
+			case Items::wall:
+				pos_gen = Pos_gen_math(DNA[Pos_gen_math(pos_gen + 1)]);
+				break;
+			case Items::food:
+				pos_gen = Pos_gen_math(DNA[Pos_gen_math(pos_gen + 2)]);
+				break;
+			case Items::poison:
+				pos_gen = Pos_gen_math(DNA[Pos_gen_math(pos_gen + 3)]);
+				break;
+			case Items::bot:
+				pos_gen = Pos_gen_math(DNA[Pos_gen_math(pos_gen + 4)]);
+				break;
+			default:
+				pos_gen = Pos_gen_math(pos_gen + 5);
+				break;
+			}*/
 			break;
 		case 3:
 			switch (Look())
@@ -66,6 +123,9 @@ void Bot::Action() {
 				break;
 			case Items::bot:
 				pos_gen = Pos_gen_math(DNA[Pos_gen_math(pos_gen + 4)]);
+				break;
+			default:
+				pos_gen = Pos_gen_math(DNA[Pos_gen_math(pos_gen + 5)]);
 				break;
 			}
 			continue;

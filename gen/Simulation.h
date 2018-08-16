@@ -1,6 +1,8 @@
 #pragma once
 #include "Bot.h"
 #include <forward_list>
+#include <conio.h>
+using namespace std;
 class Simulation
 {
 public:
@@ -11,7 +13,8 @@ public:
 
 	int Get_gener() { return generation; }
 	void Select_gener(int generation) { selected_gener = generation; };
-	
+	void Write_DNA(ostream& os);
+	int sum_score = 0;
 private:
 	void Show_curr_gener();
 	
