@@ -51,9 +51,10 @@ World::~World()
 
 World::World()
 {
-	; map = new Items*[height];
+	map = new Items*[height];
 	for (int i = 0; i < height; ++i)
 		map[i] = new Items[length];
+	Create_world();
 }
 
 Items World::Get_inf(int x,int y)

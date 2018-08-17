@@ -1,7 +1,8 @@
 #pragma once
 #include "Bot.h"
 #include <forward_list>
-#include <conio.h>
+#include "SFML_output.h"
+
 using namespace std;
 class Simulation
 {
@@ -23,11 +24,12 @@ private:
 	World* map;
 
 	forward_list<Bot*>bots;
-
+	
 	int selected_gener;
 	int bots_alive;
 	int generation;
 	//int max_generation;
 
+	SFML_output graphics;
 };
 

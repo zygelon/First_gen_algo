@@ -65,7 +65,7 @@ void Simulation::Last_bots_selection() {
 			++t;
 		}
 		if (selected_gener == generation) {
-			Show_curr_gener();
+			graphics.Draw();
 		}
 	}
 	

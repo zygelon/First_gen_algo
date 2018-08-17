@@ -10,7 +10,7 @@ class World
 {
 	friend class Bot;
 public:
-	const int height=40, length=40;
+	const int height=50, length=50;
 
 	static World& Self();
 	void Set_empty_pos(int&, int&);
@@ -18,8 +18,8 @@ public:
 	Items Get_inf(int x, int y);
 	void Show();
 private:
-	const int poison_chance = 10, food_chance = 30, wall_chance = 10;
-
+	const int poison_chance = 10, food_chance = 5, wall_chance = 10;
+	//10 30 10
 	Items **map;
 	bool is_world_old;
 	~World();
