@@ -19,6 +19,10 @@ Simulation::Simulation()
 		bots.front()->Mutation();
 		bots.front()->Mutation();
 		bots.front()->Mutation();
+		bots.front()->Mutation();
+		bots.front()->Mutation();
+		bots.front()->Mutation();
+		bots.front()->Mutation();
 	}
 }
 
@@ -36,7 +40,8 @@ void Simulation::Bot_generation() {
 		{
 			if(generation>900 && i==0) sum_score += (*t)->Get_score();
 			(*t)->Regen();
-			Bot* t_b = new Bot(**t);
+			//Bot* t_b = new Bot(**t);
+			Bot *t_b = new Bot(**t);
 			if (j < (max_bots/min_bots)/2+1)
 			{
 				t_b->Mutation();
@@ -46,17 +51,18 @@ void Simulation::Bot_generation() {
 			}
 			map->Set_empty_pos(t_b->x, t_b->y);
 			bots.push_front(t_b);
+			//delete t_b;
 		}
-	;
 }
 
 void Simulation::Last_bots_selection() {
 	generation++;
+	if (selected_gener == generation) system("pause");
 	map->Create_world();
 	while (bots_alive > min_bots)
 	{
 		bots.remove_if( [this](Bot* t)
-		{if (!t->Is_alive() && bots_alive > min_bots) { t->~Bot(); --bots_alive; return true; } return false; });
+		{if (!t->Is_alive() && bots_alive > min_bots) { delete t; --bots_alive; return true; } return false; });
 
 		forward_list<Bot*>::iterator t = bots.begin();
 		while (t != bots.end())
@@ -66,9 +72,10 @@ void Simulation::Last_bots_selection() {
 		}
 		if (selected_gener == generation) {
 			graphics.Draw();
+			cout << "Bot allive " << bots_alive << '\n';
 		}
 	}
-	
+	if(selected_gener==generation)Show_curr_gener();
 }
 
 void Simulation::Show_curr_gener()
@@ -77,7 +84,6 @@ void Simulation::Show_curr_gener()
 //	map->Show();
 //	skip = _getch();
 //	if (skip == 's' && bots_alive!=min_bots) return;
-	cout << "Bot allive " << bots_alive << '\n';
 	if (bots_alive == min_bots)
 	{
 		cout << "------------------------------\nDNA and Score:\n";
